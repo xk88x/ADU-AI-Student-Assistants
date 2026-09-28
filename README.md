@@ -3,7 +3,7 @@
 **Smart Advising, Automatic Attendance and Study & GPA Support**
 
 SWE 401: Software Engineering, Fall 2026, Abu Dhabi University
-Instructor: Dr. Murad Al-Rajab
+Instructor: Dr. Muhammad Nasir Mumtaz Bhutta
 
 ## Team Members
 
