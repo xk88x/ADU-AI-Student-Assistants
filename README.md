@@ -9,9 +9,9 @@ Instructor: Dr. Murad Al-Rajab
 
 | Name | Student ID | GitHub | Leads | Project Manager |
 |---|---|---|---|---|
-| Ahmed Alameri | 1090726 | [xk88x](https://github.com/xk88x) | F1 Smart advising bot | Phases 1 and 4 |
-| Said Taha | 1093667 | [saeed789987](https://github.com/saeed789987) | F2 Automatic attendance | Phases 2 and 5 |
-| Rayyan Daqqa | 1097796 | [y0-x9](https://github.com/y0-x9) | F3 Study assistant and GPA support | Phase 3 |
+| Ahmed Alameri | 1090726 | [xk88x](https://github.com/xk88x) | F1 Smart advising bot | Phase 5 |
+| Said Taha | 1093667 | [saeed789987](https://github.com/saeed789987) | F2 Automatic attendance | Phases 1 and 4 |
+| Rayyan Daqqa | 1097796 | [y0-x9](https://github.com/y0-x9) | F3 Study assistant and GPA support | Phases 2 and 3 |
 
 ## Problem Description
 
