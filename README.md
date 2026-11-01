@@ -65,7 +65,7 @@ tests/   test cases
 ## Project Status
 
 - [x] Phase 1: Proposal (28 Sep 2026)
-- [ ] Phase 2: Requirements engineering (1 nov 2026)
+- [x] Phase 2: Requirements engineering (1 Nov 2026)
 - [ ] Phase 3: Analysis diagrams (8 Nov 2026)
 - [ ] Phase 4: System design (15 Nov 2026)
 - [ ] Phase 5: Implementation and testing (22 Nov 2026)
