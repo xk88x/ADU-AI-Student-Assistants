@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 620" width="100%" height="100%" style="background:#ffffff; font-family:'Segoe UI', Arial, sans-serif;">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+    <marker id="dash-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284c7" />
+    </marker>
+  </defs>
+
+  <!-- Title Banner -->
+  <rect x="20" y="15" width="910" height="55" rx="8" fill="#1e293b" />
+  <text x="475" y="42" text-anchor="middle" fill="#f8fafc" font-size="18" font-weight="bold">UML Use Case Diagram: Lecture Summaries &amp; GPA Prediction (F3)</text>
+  <text x="475" y="60" text-anchor="middle" fill="#94a3b8" font-size="13">Member: Rayyan Daqqa (ID: 1097796) — Subsystem: Study Assistant &amp; GPA Risk Engine</text>
+
+  <!-- System Boundary -->
+  <rect x="210" y="85" width="530" height="515" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2" stroke-dasharray="6,4" />
+  <text x="230" y="112" fill="#334155" font-size="15" font-weight="bold">«Subsystem» AI Study Assistant &amp; Early GPA Intervention</text>
+
+  <!-- Actor 1: Student -->
+  <g transform="translate(85, 230)">
+    <circle cx="0" cy="-35" r="16" fill="#e0f2fe" stroke="#0284c7" stroke-width="2.5" />
+    <line x1="0" y1="-19" x2="0" y2="22" stroke="#0284c7" stroke-width="2.5" />
+    <line x1="-24" y1="-5" x2="24" y2="-5" stroke="#0284c7" stroke-width="2.5" />
+    <line x1="0" y1="22" x2="-18" y2="52" stroke="#0284c7" stroke-width="2.5" />
+    <line x1="0" y1="22" x2="18" y2="52" stroke="#0284c7" stroke-width="2.5" />
+    <text x="0" y="74" text-anchor="middle" fill="#0f172a" font-size="14" font-weight="bold">Student</text>
+    <text x="0" y="90" text-anchor="middle" fill="#64748b" font-size="11">«Actor»</text>
+  </g>
+
+  <!-- Actor 2: Course Instructor -->
+  <g transform="translate(865, 200)">
+    <circle cx="0" cy="-35" r="16" fill="#fef3c7" stroke="#d97706" stroke-width="2.5" />
+    <line x1="0" y1="-19" x2="0" y2="22" stroke="#d97706" stroke-width="2.5" />
+    <line x1="-24" y1="-5" x2="24" y2="-5" stroke="#d97706" stroke-width="2.5" />
+    <line x1="0" y1="22" x2="-18" y2="52" stroke="#d97706" stroke-width="2.5" />
+    <line x1="0" y1="22" x2="18" y2="52" stroke="#d97706" stroke-width="2.5" />
+    <text x="0" y="74" text-anchor="middle" fill="#0f172a" font-size="14" font-weight="bold">Course Instructor</text>
+    <text x="0" y="90" text-anchor="middle" fill="#64748b" font-size="11">«Actor»</text>
+  </g>
+
+  <!-- Actor 3: Academic Advisor -->
+  <g transform="translate(865, 430)">
+    <circle cx="0" cy="-35" r="16" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.5" />
+    <line x1="0" y1="-19" x2="0" y2="22" stroke="#16a34a" stroke-width="2.5" />
+    <line x1="-24" y1="-5" x2="24" y2="-5" stroke="#16a34a" stroke-width="2.5" />
+    <line x1="0" y1="22" x2="-18" y2="52" stroke="#16a34a" stroke-width="2.5" />
+    <line x1="0" y1="22" x2="18" y2="52" stroke="#16a34a" stroke-width="2.5" />
+    <text x="0" y="74" text-anchor="middle" fill="#0f172a" font-size="14" font-weight="bold">Academic Advisor</text>
+    <text x="0" y="90" text-anchor="middle" fill="#64748b" font-size="11">«Actor»</text>
+  </g>
+
+  <!-- Use Cases -->
+  <!-- UC-09 Upload Lecture Recording -->
+  <g transform="translate(600, 160)">
+    <ellipse cx="0" cy="0" rx="105" ry="28" fill="#ffffff" stroke="#d97706" stroke-width="2" filter="url(#shadow)" />
+    <text x="0" y="-4" text-anchor="middle" fill="#78350f" font-size="12" font-weight="600">UC-09: Upload Lecture</text>
+    <text x="0" y="12" text-anchor="middle" fill="#78350f" font-size="11">Recording (Section Instructor)</text>
+  </g>
+
+  <!-- UC-19 Generate Summary -->
+  <g transform="translate(370, 160)">
+    <ellipse cx="0" cy="0" rx="110" ry="28" fill="#ffffff" stroke="#0284c7" stroke-width="2" filter="url(#shadow)" />
+    <text x="0" y="-4" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">UC-19: Transcribe &amp; Generate</text>
+    <text x="0" y="12" text-anchor="middle" fill="#0f172a" font-size="11">Exam-Focus PDF Summary</text>
+  </g>
+
+  <!-- UC-10 Approve / Withdraw Summary -->
+  <g transform="translate(600, 260)">
+    <ellipse cx="0" cy="0" rx="100" ry="26" fill="#ffffff" stroke="#d97706" stroke-width="2" filter="url(#shadow)" />
+    <text x="0" y="-4" text-anchor="middle" fill="#78350f" font-size="12" font-weight="600">UC-10: Review &amp; Approve</text>
+    <text x="0" y="12" text-anchor="middle" fill="#78350f" font-size="11">Draft PDF Summary</text>
+  </g>
+
+  <!-- UC-11 Read Lecture Summary -->
+  <g transform="translate(370, 260)">
+    <ellipse cx="0" cy="0" rx="100" ry="26" fill="#ffffff" stroke="#0284c7" stroke-width="2" filter="url(#shadow)" />
+    <text x="0" y="-4" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">UC-11: Read &amp; Download</text>
+    <text x="0" y="12" text-anchor="middle" fill="#0f172a" font-size="11">Section PDF Summary</text>
+  </g>
+
+  <!-- UC-12 Set GPA Target -->
+  <g transform="translate(370, 360)">
+    <ellipse cx="0" cy="0" rx="95" ry="26" fill="#ffffff" stroke="#0284c7" stroke-width="2" filter="url(#shadow)" />
+    <text x="0" y="-4" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">UC-12: Set Personal</text>
+    <text x="0" y="12" text-anchor="middle" fill="#0f172a" font-size="11">GPA Target (2.0 - 4.0)</text>
+  </g>
+
+  <!-- UC-13 View GPA Guidance -->
+  <g transform="translate(370, 460)">
+    <ellipse cx="0" cy="0" rx="105" ry="28" fill="#ffffff" stroke="#0284c7" stroke-width="2" filter="url(#shadow)" />
+    <text x="0" y="-4" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">UC-13: View GPA Guidance</text>
+    <text x="0" y="12" text-anchor="middle" fill="#0f172a" font-size="11">&amp; Required Course Grades</text>
+  </g>
+
+  <!-- UC-14 Predict GPA & Warn -->
+  <g transform="translate(600, 410)">
+    <ellipse cx="0" cy="0" rx="110" ry="28" fill="#fef2f2" stroke="#dc2626" stroke-width="2" filter="url(#shadow)" />
+    <text x="0" y="-4" text-anchor="middle" fill="#991b1b" font-size="12" font-weight="600">UC-14: Predict Semester GPA</text>
+    <text x="0" y="12" text-anchor="middle" fill="#991b1b" font-size="11" font-weight="bold">&amp; Trigger Early Risk Alerts</text>
+  </g>
+
+  <!-- UC-15 View At-Risk Advisees -->
+  <g transform="translate(600, 505)">
+    <ellipse cx="0" cy="0" rx="100" ry="26" fill="#ffffff" stroke="#16a34a" stroke-width="2" filter="url(#shadow)" />
+    <text x="0" y="-4" text-anchor="middle" fill="#14532d" font-size="12" font-weight="600">UC-15: View At-Risk</text>
+    <text x="0" y="12" text-anchor="middle" fill="#14532d" font-size="11">Advisees Dashboard</text>
+  </g>
+
+  <!-- Associations -->
+  <!-- Student to UC-11 -->
+  <line x1="120" y1="230" x2="270" y2="260" stroke="#334155" stroke-width="1.8" />
+  <!-- Student to UC-12 -->
+  <line x1="120" y1="245" x2="280" y2="350" stroke="#334155" stroke-width="1.8" />
+  <!-- Student to UC-13 -->
+  <line x1="120" y1="260" x2="275" y2="445" stroke="#334155" stroke-width="1.8" />
+
+  <!-- Instructor to UC-09 -->
+  <line x1="820" y1="190" x2="705" y2="170" stroke="#334155" stroke-width="1.8" />
+  <!-- Instructor to UC-10 -->
+  <line x1="820" y1="210" x2="700" y2="250" stroke="#334155" stroke-width="1.8" />
+
+  <!-- Advisor to UC-15 -->
+  <line x1="820" y1="440" x2="700" y2="500" stroke="#334155" stroke-width="1.8" />
+
+  <!-- <<include>> UC-09 to UC-19 -->
+  <line x1="495" y1="160" x2="480" y2="160" stroke="#0284c7" stroke-width="1.6" stroke-dasharray="5,4" marker-end="url(#dash-arrow)" />
+  <text x="535" y="150" text-anchor="middle" fill="#0284c7" font-size="11" font-weight="bold">«include»</text>
+
+  <!-- <<include>> UC-13 to UC-14 -->
+  <line x1="475" y1="445" x2="510" y2="425" stroke="#dc2626" stroke-width="1.6" stroke-dasharray="5,4" marker-end="url(#dash-arrow)" />
+  <text x="490" y="420" text-anchor="middle" fill="#dc2626" font-size="11" font-weight="bold">«include»</text>
+
+  <!-- <<include>> UC-15 to UC-14 -->
+  <line x1="600" y1="479" x2="600" y2="438" stroke="#16a34a" stroke-width="1.6" stroke-dasharray="5,4" marker-end="url(#dash-arrow)" />
+  <text x="635" y="465" text-anchor="middle" fill="#16a34a" font-size="11" font-weight="bold">«include»</text>
+
+  <!-- Footer Notice -->
+  <rect x="210" y="540" width="530" height="50" rx="6" fill="#e2e8f0" />
+  <text x="225" y="558" fill="#1e293b" font-size="11" font-weight="bold">Academic Integrity &amp; Deletion Safeguards (FR3.2 &amp; FR3.4):</text>
+  <text x="225" y="574" fill="#475569" font-size="11">• Audio auto-deleted within 1 hr of transcription. Summaries published only upon instructor review.</text>
+</svg>

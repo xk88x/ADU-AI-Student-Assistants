@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 680" width="100%" height="100%" style="background:#ffffff; font-family:'Segoe UI', Arial, sans-serif;">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="2" stdDeviation="2" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1e293b" />
+    </marker>
+    <marker id="dash-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284c7" />
+    </marker>
+  </defs>
+
+  <!-- Title Banner -->
+  <rect x="20" y="15" width="960" height="55" rx="8" fill="#1e293b" />
+  <text x="500" y="42" text-anchor="middle" fill="#f8fafc" font-size="18" font-weight="bold">UML Sequence Diagram: UC-03 Build Clash-Free Schedule</text>
+  <text x="500" y="60" text-anchor="middle" fill="#94a3b8" font-size="13">Member: Ahmed Alameri (ID: 1090726) — Object Lifelines, Credit-Guard &amp; Alt Frames</text>
+
+  <!-- Lifeline Headers -->
+  <!-- Student -->
+  <g transform="translate(100, 95)">
+    <rect x="-55" y="0" width="110" height="35" rx="6" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.8" filter="url(#shadow)" />
+    <text x="0" y="22" text-anchor="middle" fill="#0369a1" font-size="13" font-weight="bold">:Student</text>
+    <line x1="0" y1="35" x2="0" y2="560" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,4" />
+  </g>
+
+  <!-- AdvisingUI -->
+  <g transform="translate(280, 95)">
+    <rect x="-65" y="0" width="130" height="35" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1.8" filter="url(#shadow)" />
+    <text x="0" y="17" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="bold">«boundary»</text>
+    <text x="0" y="30" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="bold">:AdvisingUI</text>
+    <line x1="0" y1="35" x2="0" y2="560" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,4" />
+  </g>
+
+  <!-- AdvisingController -->
+  <g transform="translate(480, 95)">
+    <rect x="-70" y="0" width="140" height="35" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.8" filter="url(#shadow)" />
+    <text x="0" y="17" text-anchor="middle" fill="#78350f" font-size="12" font-weight="bold">«control»</text>
+    <text x="0" y="30" text-anchor="middle" fill="#78350f" font-size="12" font-weight="bold">:AdvisingController</text>
+    <line x1="0" y1="35" x2="0" y2="560" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,4" />
+  </g>
+
+  <!-- StudyGPAController -->
+  <g transform="translate(680, 95)">
+    <rect x="-75" y="0" width="150" height="35" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.8" filter="url(#shadow)" />
+    <text x="0" y="17" text-anchor="middle" fill="#78350f" font-size="12" font-weight="bold">«control»</text>
+    <text x="0" y="30" text-anchor="middle" fill="#78350f" font-size="12" font-weight="bold">:StudyGPAController</text>
+    <line x1="0" y1="35" x2="0" y2="560" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,4" />
+  </g>
+
+  <!-- ScheduleDraft -->
+  <g transform="translate(880, 95)">
+    <rect x="-65" y="0" width="130" height="35" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1.8" filter="url(#shadow)" />
+    <text x="0" y="17" text-anchor="middle" fill="#14532d" font-size="12" font-weight="bold">«entity»</text>
+    <text x="0" y="30" text-anchor="middle" fill="#14532d" font-size="12" font-weight="bold">:ScheduleDraft</text>
+    <line x1="0" y1="35" x2="0" y2="560" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,4" />
+  </g>
+
+  <!-- Activation Bars -->
+  <rect x="275" y="150" width="10" height="400" fill="#cbd5e1" stroke="#475569" />
+  <rect x="475" y="170" width="10" height="360" fill="#fde68a" stroke="#b45309" />
+  <rect x="675" y="195" width="10" height="60" fill="#fde68a" stroke="#b45309" />
+  <rect x="875" y="325" width="10" height="180" fill="#bbf7d0" stroke="#15803d" />
+
+  <!-- Messages -->
+  <!-- 1: selectPlanNextSemester() -->
+  <line x1="100" y1="155" x2="275" y2="155" stroke="#1e293b" stroke-width="1.6" marker-end="url(#arrow)" />
+  <text x="187" y="148" text-anchor="middle" fill="#1e293b" font-size="11" font-weight="600">1: selectPlanNextSemester()</text>
+
+  <!-- 2: getEligibleCourses(studentId) -->
+  <line x1="285" y1="175" x2="475" y2="175" stroke="#1e293b" stroke-width="1.6" marker-end="url(#arrow)" />
+  <text x="380" y="168" text-anchor="middle" fill="#1e293b" font-size="11" font-weight="600">2: getEligibleCourses(studentId)</text>
+
+  <!-- 3: predictGPA(studentId) [UC-14] -->
+  <line x1="485" y1="200" x2="675" y2="200" stroke="#1e293b" stroke-width="1.6" marker-end="url(#arrow)" />
+  <text x="580" y="193" text-anchor="middle" fill="#1e293b" font-size="11" font-weight="600">3: predictGPA(studentId) [UC-14]</text>
+
+  <!-- 4: return (predictedGPA, creditLimit) -->
+  <line x1="675" y1="235" x2="485" y2="235" stroke="#0284c7" stroke-width="1.6" stroke-dasharray="4,4" marker-end="url(#dash-arrow)" />
+  <text x="580" y="228" text-anchor="middle" fill="#0284c7" font-size="11" font-weight="600">4: return (predictedGPA, creditLimit: 12 if &lt; 2.0)</text>
+
+  <!-- 5: displayEligible(courses, limit) -->
+  <line x1="475" y1="265" x2="285" y2="265" stroke="#0284c7" stroke-width="1.6" stroke-dasharray="4,4" marker-end="url(#dash-arrow)" />
+  <text x="380" y="258" text-anchor="middle" fill="#0284c7" font-size="11" font-weight="600">5: displayEligible(courses, creditLimit)</text>
+
+  <!-- 6: selectCourses(courseIds) -->
+  <line x1="100" y1="295" x2="275" y2="295" stroke="#1e293b" stroke-width="1.6" marker-end="url(#arrow)" />
+  <text x="187" y="288" text-anchor="middle" fill="#1e293b" font-size="11" font-weight="600">6: selectCourses(courseIds)</text>
+
+  <!-- 7: buildSchedule(courseIds) -->
+  <line x1="285" y1="315" x2="475" y2="315" stroke="#1e293b" stroke-width="1.6" marker-end="url(#arrow)" />
+  <text x="380" y="308" text-anchor="middle" fill="#1e293b" font-size="11" font-weight="600">7: buildSchedule(courseIds)</text>
+
+  <!-- 8: hasClash(sections) -->
+  <line x1="485" y1="335" x2="875" y2="335" stroke="#1e293b" stroke-width="1.6" marker-end="url(#arrow)" />
+  <text x="680" y="328" text-anchor="middle" fill="#1e293b" font-size="11" font-weight="600">8: hasClash(sections)</text>
+
+  <!-- Alt Frame: Clashing vs Clash-Free -->
+  <rect x="250" y="360" width="670" height="150" fill="none" stroke="#e11d48" stroke-width="1.5" stroke-dasharray="5,3" />
+  <rect x="250" y="360" width="45" height="20" fill="#fee2e2" stroke="#e11d48" />
+  <text x="272" y="374" text-anchor="middle" fill="#9f1239" font-size="11" font-weight="bold">alt</text>
+  <text x="310" y="374" fill="#9f1239" font-size="11" font-weight="600">[No clash-free combination exists]</text>
+
+  <!-- 9a: return clashingCourses -->
+  <line x1="875" y1="395" x2="485" y2="395" stroke="#e11d48" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#dash-arrow)" />
+  <text x="680" y="388" text-anchor="middle" fill="#e11d48" font-size="11">9a: return clashingCourses</text>
+
+  <line x1="475" y1="415" x2="285" y2="415" stroke="#e11d48" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#dash-arrow)" />
+  <text x="380" y="408" text-anchor="middle" fill="#e11d48" font-size="11">displayClashNotice(clashingCourses)</text>
+
+  <!-- Alt divider -->
+  <line x1="250" y1="435" x2="920" y2="435" stroke="#e11d48" stroke-width="1" stroke-dasharray="3,3" />
+  <text x="310" y="450" fill="#15803d" font-size="11" font-weight="600">[Clash-free combination found]</text>
+
+  <!-- 9b: return clashFreeSchedule -->
+  <line x1="875" y1="470" x2="485" y2="470" stroke="#15803d" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#dash-arrow)" />
+  <text x="680" y="463" text-anchor="middle" fill="#15803d" font-size="11">9b: return (draftSchedule, alternativeSections)</text>
+
+  <line x1="475" y1="490" x2="285" y2="490" stroke="#15803d" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#dash-arrow)" />
+  <text x="380" y="483" text-anchor="middle" fill="#15803d" font-size="11">10: displayTimetable(draftSchedule)</text>
+
+  <!-- 11: submitToAdvisor() -->
+  <line x1="100" y1="535" x2="275" y2="535" stroke="#1e293b" stroke-width="1.6" marker-end="url(#arrow)" />
+  <text x="187" y="528" text-anchor="middle" fill="#1e293b" font-size="11" font-weight="600">11: submitToAdvisor() [UC-04]</text>
+
+  <line x1="285" y1="545" x2="475" y2="545" stroke="#1e293b" stroke-width="1.6" marker-end="url(#arrow)" />
+  <text x="380" y="538" text-anchor="middle" fill="#1e293b" font-size="11" font-weight="600">submitDraftToAdvisor(draftId)</text>
+
+  <!-- Footer Notice -->
+  <rect x="100" y="590" width="800" height="65" rx="6" fill="#f1f5f9" stroke="#cbd5e1" />
+  <text x="120" y="612" fill="#0f172a" font-size="12" font-weight="bold">Message &amp; Class Integration Notes:</text>
+  <text x="120" y="630" fill="#475569" font-size="11">• Operations match exactly with AdvisingController, StudyGPAController and ScheduleDraft defined in the Phase 3 Class Diagram.</text>
+  <text x="120" y="645" fill="#475569" font-size="11">• Message 3 demonstrates the inter-module bridge from F1 into F3 to fetch the GPA ceiling before schedule building.</text>
+</svg>

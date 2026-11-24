@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 680" width="100%" height="100%" style="background:#ffffff; font-family:'Segoe UI', Arial, sans-serif;">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#334155" />
+    </marker>
+    <marker id="red-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626" />
+    </marker>
+  </defs>
+
+  <!-- Title Banner -->
+  <rect x="20" y="15" width="960" height="55" rx="8" fill="#0f172a" />
+  <text x="500" y="42" text-anchor="middle" fill="#f8fafc" font-size="18" font-weight="bold">UML Activity Diagram: UC-09 Audio Ingestion &amp; UC-19 AI Summarization</text>
+  <text x="500" y="60" text-anchor="middle" fill="#94a3b8" font-size="13">Member: Rayyan Daqqa (ID: 1097796) — Parallel Processing &amp; Audio Retention Lifecycles</text>
+
+  <!-- Swimlane Headers -->
+  <rect x="30" y="85" width="280" height="40" fill="#fef3c7" stroke="#cbd5e1" />
+  <text x="170" y="110" text-anchor="middle" fill="#b45309" font-size="14" font-weight="bold">Course Instructor</text>
+
+  <rect x="310" y="85" width="370" height="40" fill="#f1f5f9" stroke="#cbd5e1" />
+  <text x="495" y="110" text-anchor="middle" fill="#0f172a" font-size="14" font-weight="bold">StudyGPAController &amp; Backend</text>
+
+  <rect x="680" y="85" width="290" height="40" fill="#e0f2fe" stroke="#cbd5e1" />
+  <text x="825" y="110" text-anchor="middle" fill="#0369a1" font-size="14" font-weight="bold">Local AI Pipeline (Whisper &amp; Ollama)</text>
+
+  <!-- Swimlane Columns -->
+  <rect x="30" y="125" width="280" height="535" fill="#fffbeb" stroke="#e2e8f0" />
+  <rect x="310" y="125" width="370" height="535" fill="#fafafa" stroke="#e2e8f0" />
+  <rect x="680" y="125" width="290" height="535" fill="#f8fafc" stroke="#e2e8f0" />
+
+  <!-- Initial State -->
+  <circle cx="170" cy="155" r="12" fill="#0f172a" />
+
+  <!-- Action: Select Section & Upload Recording -->
+  <rect x="80" y="185" width="180" height="45" rx="8" fill="#ffffff" stroke="#d97706" stroke-width="2" filter="url(#shadow)" />
+  <text x="170" y="205" text-anchor="middle" fill="#78350f" font-size="12" font-weight="600">Select Section &amp;</text>
+  <text x="170" y="221" text-anchor="middle" fill="#78350f" font-size="12" font-weight="600">Upload Audio File</text>
+  <line x1="170" y1="167" x2="170" y2="185" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+
+  <!-- Verification: Supported MIME Type & Size -->
+  <rect x="375" y="185" width="240" height="45" rx="8" fill="#ffffff" stroke="#0284c7" stroke-width="2" filter="url(#shadow)" />
+  <text x="495" y="205" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">Validate Audio Format</text>
+  <text x="495" y="221" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">(mp3, wav, m4a &lt;= 100MB)</text>
+  <line x1="260" y1="207" x2="375" y2="207" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+
+  <!-- Decision: Valid Audio? -->
+  <polygon points="495,255 535,275 495,295 455,275" fill="#fef08a" stroke="#ca8a04" stroke-width="2" />
+  <text x="495" y="278" text-anchor="middle" fill="#713f12" font-size="9" font-weight="bold">Valid?</text>
+  <line x1="495" y1="230" x2="495" y2="255" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+
+  <!-- Reject -> Instructor -->
+  <rect x="80" y="255" width="180" height="40" rx="8" fill="#fee2e2" stroke="#dc2626" stroke-width="2" filter="url(#shadow)" />
+  <text x="170" y="279" text-anchor="middle" fill="#991b1b" font-size="11" font-weight="bold">Reject &amp; Display Allowed Formats</text>
+  <line x1="455" y1="275" x2="260" y2="275" stroke="#dc2626" stroke-width="1.8" marker-end="url(#red-arrow)" />
+  <text x="350" y="268" fill="#dc2626" font-size="10" font-weight="bold">[Invalid Type]</text>
+
+  <!-- Valid -> Transcribe with Whisper -->
+  <rect x="725" y="255" width="200" height="40" rx="8" fill="#ffffff" stroke="#0284c7" stroke-width="2" filter="url(#shadow)" />
+  <text x="825" y="279" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">Whisper ASR Transcription</text>
+  <line x1="535" y1="275" x2="725" y2="275" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+  <text x="625" y="268" fill="#16a34a" font-size="10" font-weight="bold">[Valid Format]</text>
+
+  <!-- Fork Bar: Parallel Processing -->
+  <rect x="715" y="325" width="220" height="6" rx="2" fill="#0f172a" />
+  <line x1="825" y1="295" x2="825" y2="325" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+
+  <!-- Parallel Branch 1: Audio Deletion <= 1hr (NFR11) -->
+  <rect x="710" y="355" width="105" height="45" rx="6" fill="#fee2e2" stroke="#dc2626" stroke-width="1.8" filter="url(#shadow)" />
+  <text x="762" y="373" text-anchor="middle" fill="#991b1b" font-size="10" font-weight="bold">Purge Raw Audio</text>
+  <text x="762" y="388" text-anchor="middle" fill="#991b1b" font-size="10" font-weight="bold">&lt;= 1 hr (NFR11)</text>
+  <line x1="762" y1="331" x2="762" y2="355" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+
+  <!-- Parallel Branch 2: Ollama LLM Exam Focus Extraction -->
+  <rect x="830" y="355" width="115" height="45" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1.8" filter="url(#shadow)" />
+  <text x="887" y="373" text-anchor="middle" fill="#14532d" font-size="10" font-weight="bold">Ollama RAG Extract</text>
+  <text x="887" y="388" text-anchor="middle" fill="#14532d" font-size="10" font-weight="bold">Exam Timestamps</text>
+  <line x1="887" y1="331" x2="887" y2="355" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+
+  <!-- Join Bar -->
+  <rect x="715" y="425" width="220" height="6" rx="2" fill="#0f172a" />
+  <line x1="762" y1="400" x2="762" y2="425" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+  <line x1="887" y1="400" x2="887" y2="425" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+
+  <!-- Generate ReportLab PDF Draft -->
+  <rect x="375" y="410" width="240" height="45" rx="8" fill="#ffffff" stroke="#0284c7" stroke-width="2" filter="url(#shadow)" />
+  <text x="495" y="428" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">Compile ReportLab PDF Draft</text>
+  <text x="495" y="444" text-anchor="middle" fill="#0f172a" font-size="11">(approved = False)</text>
+  <line x1="715" y1="428" x2="615" y2="428" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+
+  <!-- Instructor Reviews Draft -->
+  <rect x="80" y="410" width="180" height="45" rx="8" fill="#ffffff" stroke="#d97706" stroke-width="2" filter="url(#shadow)" />
+  <text x="170" y="428" text-anchor="middle" fill="#78350f" font-size="12" font-weight="600">Review Draft Summary</text>
+  <text x="170" y="444" text-anchor="middle" fill="#78350f" font-size="11">&amp; Exam Focus Points (UC-10)</text>
+  <line x1="375" y1="432" x2="260" y2="432" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+
+  <!-- Decision: Approved? -->
+  <polygon points="170,480 210,500 170,520 130,500" fill="#fef08a" stroke="#ca8a04" stroke-width="2" />
+  <text x="170" y="503" text-anchor="middle" fill="#713f12" font-size="9" font-weight="bold">Approve?</text>
+  <line x1="170" y1="455" x2="170" y2="480" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+
+  <!-- No -> Withdraw & Discard Draft -->
+  <rect x="80" y="555" width="180" height="40" rx="8" fill="#fee2e2" stroke="#dc2626" stroke-width="2" filter="url(#shadow)" />
+  <text x="170" y="579" text-anchor="middle" fill="#991b1b" font-size="11" font-weight="bold">Withdraw &amp; Delete Draft</text>
+  <line x1="170" y1="520" x2="170" y2="555" stroke="#dc2626" stroke-width="1.8" marker-end="url(#red-arrow)" />
+  <text x="178" y="540" fill="#dc2626" font-size="10" font-weight="bold">[No]</text>
+
+  <!-- Yes -> Publish to Enrolled Students Only (FR3.4) -->
+  <rect x="375" y="480" width="240" height="45" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2" filter="url(#shadow)" />
+  <text x="495" y="498" text-anchor="middle" fill="#14532d" font-size="12" font-weight="bold">Publish PDF to Enrolled</text>
+  <text x="495" y="514" text-anchor="middle" fill="#14532d" font-size="11">Section Students Only (FR3.4)</text>
+  <line x1="210" y1="500" x2="375" y2="500" stroke="#16a34a" stroke-width="1.8" marker-end="url(#arrow)" />
+  <text x="270" y="492" fill="#16a34a" font-size="10" font-weight="bold">[Yes: Approved]</text>
+
+  <!-- Final Activity End State -->
+  <circle cx="495" cy="575" r="10" fill="none" stroke="#0f172a" stroke-width="2" />
+  <circle cx="495" cy="575" r="6" fill="#0f172a" />
+  <line x1="495" y1="525" x2="495" y2="565" stroke="#0f172a" stroke-width="1.8" marker-end="url(#arrow)" />
+</svg>

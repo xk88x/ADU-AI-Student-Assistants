@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 680" width="100%" height="100%" style="background:#ffffff; font-family:'Segoe UI', Arial, sans-serif;">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="2" stdDeviation="2" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1e293b" />
+    </marker>
+    <marker id="dash-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284c7" />
+    </marker>
+  </defs>
+
+  <!-- Title Banner -->
+  <rect x="20" y="15" width="960" height="55" rx="8" fill="#1e293b" />
+  <text x="500" y="42" text-anchor="middle" fill="#f8fafc" font-size="18" font-weight="bold">UML Sequence Diagram: UC-05 Geofence Check-In &amp; UC-06 QR Fallback</text>
+  <text x="500" y="60" text-anchor="middle" fill="#94a3b8" font-size="13">Member: Said Taha (ID: 1093667) — Sequence Interactions with Privacy Discard &amp; Alt Frames</text>
+
+  <!-- Lifeline Headers -->
+  <!-- Student -->
+  <g transform="translate(100, 95)">
+    <rect x="-55" y="0" width="110" height="35" rx="6" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.8" filter="url(#shadow)" />
+    <text x="0" y="22" text-anchor="middle" fill="#0369a1" font-size="13" font-weight="bold">:Student</text>
+    <line x1="0" y1="35" x2="0" y2="560" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,4" />
+  </g>
+
+  <!-- AttendanceUI -->
+  <g transform="translate(290, 95)">
+    <rect x="-70" y="0" width="140" height="35" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1.8" filter="url(#shadow)" />
+    <text x="0" y="17" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="bold">«boundary»</text>
+    <text x="0" y="30" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="bold">:AttendanceUI</text>
+    <line x1="0" y1="35" x2="0" y2="560" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,4" />
+  </g>
+
+  <!-- PhoneBrowser -->
+  <g transform="translate(500, 95)">
+    <rect x="-75" y="0" width="150" height="35" rx="6" fill="#fffbeb" stroke="#d97706" stroke-width="1.8" filter="url(#shadow)" />
+    <text x="0" y="17" text-anchor="middle" fill="#78350f" font-size="12" font-weight="bold">«boundary»</text>
+    <text x="0" y="30" text-anchor="middle" fill="#78350f" font-size="12" font-weight="bold">:PhoneBrowser(GPS)</text>
+    <line x1="0" y1="35" x2="0" y2="560" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,4" />
+  </g>
+
+  <!-- AttendanceController -->
+  <g transform="translate(720, 95)">
+    <rect x="-80" y="0" width="160" height="35" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.8" filter="url(#shadow)" />
+    <text x="0" y="17" text-anchor="middle" fill="#78350f" font-size="12" font-weight="bold">«control»</text>
+    <text x="0" y="30" text-anchor="middle" fill="#78350f" font-size="12" font-weight="bold">:AttendanceController</text>
+    <line x1="0" y1="35" x2="0" y2="560" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,4" />
+  </g>
+
+  <!-- AttendanceRecord -->
+  <g transform="translate(900, 95)">
+    <rect x="-65" y="0" width="130" height="35" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1.8" filter="url(#shadow)" />
+    <text x="0" y="17" text-anchor="middle" fill="#14532d" font-size="12" font-weight="bold">«entity»</text>
+    <text x="0" y="30" text-anchor="middle" fill="#14532d" font-size="12" font-weight="bold">:AttendanceRecord</text>
+    <line x1="0" y1="35" x2="0" y2="560" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,4" />
+  </g>
+
+  <!-- Activation Bars -->
+  <rect x="285" y="150" width="10" height="400" fill="#cbd5e1" stroke="#475569" />
+  <rect x="495" y="175" width="10" height="75" fill="#fef08a" stroke="#b45309" />
+  <rect x="715" y="240" width="10" height="300" fill="#fde68a" stroke="#b45309" />
+  <rect x="895" y="295" width="10" height="235" fill="#bbf7d0" stroke="#15803d" />
+
+  <!-- 1: tapCheckIn(sessionId) -->
+  <line x1="100" y1="155" x2="285" y2="155" stroke="#1e293b" stroke-width="1.6" marker-end="url(#arrow)" />
+  <text x="192" y="148" text-anchor="middle" fill="#1e293b" font-size="11" font-weight="600">1: tapCheckIn(sessionId)</text>
+
+  <!-- 2: requestCurrentPosition() -->
+  <line x1="295" y1="175" x2="495" y2="175" stroke="#1e293b" stroke-width="1.6" marker-end="url(#arrow)" />
+  <text x="395" y="168" text-anchor="middle" fill="#1e293b" font-size="11" font-weight="600">2: requestCurrentPosition()</text>
+
+  <!-- 3: return (lat, lon) with student consent -->
+  <line x1="495" y1="230" x2="295" y2="230" stroke="#0284c7" stroke-width="1.6" stroke-dasharray="4,4" marker-end="url(#dash-arrow)" />
+  <text x="395" y="222" text-anchor="middle" fill="#0284c7" font-size="11" font-weight="600">3: (lat, lon) [consent given]</text>
+
+  <!-- 4: verifyGeofence(sessionId, lat, lon) -->
+  <line x1="295" y1="250" x2="715" y2="250" stroke="#1e293b" stroke-width="1.6" marker-end="url(#arrow)" />
+  <text x="505" y="243" text-anchor="middle" fill="#1e293b" font-size="11" font-weight="600">4: verifyGeofence(sessionId, lat, lon)</text>
+
+  <!-- 5: markPresent(insideFence=true) [DISCARD COORDS] -->
+  <line x1="725" y1="295" x2="895" y2="295" stroke="#16a34a" stroke-width="1.6" marker-end="url(#arrow)" />
+  <text x="810" y="285" text-anchor="middle" fill="#16a34a" font-size="11" font-weight="bold">5: markPresent(insideFence=true)</text>
+  <text x="810" y="302" text-anchor="middle" fill="#dc2626" font-size="10" font-weight="600">[Discard lat/lon immediately (NFR11)]</text>
+
+  <!-- 6: return (recordSaved, absencePct) -->
+  <line x1="895" y1="335" x2="725" y2="335" stroke="#0284c7" stroke-width="1.6" stroke-dasharray="4,4" marker-end="url(#dash-arrow)" />
+  <text x="810" y="328" text-anchor="middle" fill="#0284c7" font-size="11">6: return (recordSaved, absencePct)</text>
+
+  <line x1="715" y1="355" x2="295" y2="355" stroke="#0284c7" stroke-width="1.6" stroke-dasharray="4,4" marker-end="url(#dash-arrow)" />
+  <text x="505" y="348" text-anchor="middle" fill="#0284c7" font-size="11">7: confirmCheckIn(status="Present", method="GEO")</text>
+
+  <!-- Alt Frame: Location Declined or Outside Geofence -> QR Fallback -->
+  <rect x="70" y="380" width="860" height="155" fill="none" stroke="#e11d48" stroke-width="1.5" stroke-dasharray="5,3" />
+  <rect x="70" y="380" width="45" height="20" fill="#fee2e2" stroke="#e11d48" />
+  <text x="92" y="394" text-anchor="middle" fill="#9f1239" font-size="11" font-weight="bold">alt</text>
+  <text x="130" y="394" fill="#9f1239" font-size="11" font-weight="600">[Location declined or outside geofence -> QR Fallback (UC-06)]</text>
+
+  <!-- 8: scanQR(qrToken) -->
+  <line x1="100" y1="420" x2="285" y2="420" stroke="#1e293b" stroke-width="1.6" marker-end="url(#arrow)" />
+  <text x="192" y="413" text-anchor="middle" fill="#1e293b" font-size="11" font-weight="600">8: scanQR(qrToken) [UC-06]</text>
+
+  <!-- 9: validateQRToken(qrToken) -->
+  <line x1="295" y1="440" x2="715" y2="440" stroke="#1e293b" stroke-width="1.6" marker-end="url(#arrow)" />
+  <text x="505" y="433" text-anchor="middle" fill="#1e293b" font-size="11" font-weight="600">9: validateQRToken(qrToken, 30s TTL)</text>
+
+  <!-- 10: markPresent(method="QR") -->
+  <line x1="725" y1="465" x2="895" y2="465" stroke="#16a34a" stroke-width="1.6" marker-end="url(#arrow)" />
+  <text x="810" y="458" text-anchor="middle" fill="#16a34a" font-size="11" font-weight="bold">10: markPresent(method="QR")</text>
+
+  <!-- 11: return confirmation -->
+  <line x1="715" y1="495" x2="295" y2="495" stroke="#0284c7" stroke-width="1.6" stroke-dasharray="4,4" marker-end="url(#dash-arrow)" />
+  <text x="505" y="488" text-anchor="middle" fill="#0284c7" font-size="11">11: displayCheckInConfirmation(method="QR")</text>
+
+  <!-- Footer Notice -->
+  <rect x="70" y="585" width="860" height="65" rx="6" fill="#f1f5f9" stroke="#cbd5e1" />
+  <text x="90" y="608" fill="#0f172a" font-size="12" font-weight="bold">Zero-Knowledge Location Verification &amp; Security Protocol:</text>
+  <text x="90" y="625" fill="#475569" font-size="11">• As shown in message 5, coordinates are consumed solely inside volatile memory to calculate geofence status and are discarded.</text>
+  <text x="90" y="640" fill="#475569" font-size="11">• AttendanceRecord entity contains only (session_id, student_id, inside_fence, method) with no GPS database columns.</text>
+</svg>

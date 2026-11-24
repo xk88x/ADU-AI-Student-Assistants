@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 680" width="100%" height="100%" style="background:#ffffff; font-family:'Segoe UI', Arial, sans-serif;">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#334155" />
+    </marker>
+    <marker id="red-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626" />
+    </marker>
+  </defs>
+
+  <!-- Title Banner -->
+  <rect x="20" y="15" width="960" height="55" rx="8" fill="#0f172a" />
+  <text x="500" y="42" text-anchor="middle" fill="#f8fafc" font-size="18" font-weight="bold">UML Activity Diagram: UC-05 Geofenced Check-In &amp; QR Fallback</text>
+  <text x="500" y="60" text-anchor="middle" fill="#94a3b8" font-size="13">Member: Said Taha (ID: 1093667) — Student, Phone Browser &amp; Attendance Controller</text>
+
+  <!-- Swimlane Headers -->
+  <rect x="30" y="85" width="280" height="40" fill="#f1f5f9" stroke="#cbd5e1" />
+  <text x="170" y="110" text-anchor="middle" fill="#0f172a" font-size="14" font-weight="bold">Student</text>
+
+  <rect x="310" y="85" width="310" height="40" fill="#fef3c7" stroke="#cbd5e1" />
+  <text x="465" y="110" text-anchor="middle" fill="#b45309" font-size="14" font-weight="bold">Phone Browser (Geolocation API)</text>
+
+  <rect x="620" y="85" width="350" height="40" fill="#e0f2fe" stroke="#cbd5e1" />
+  <text x="795" y="110" text-anchor="middle" fill="#0369a1" font-size="14" font-weight="bold">AttendanceController &amp; Backend</text>
+
+  <!-- Swimlane Columns -->
+  <rect x="30" y="125" width="280" height="535" fill="#fafafa" stroke="#e2e8f0" />
+  <rect x="310" y="125" width="310" height="535" fill="#fffbeb" stroke="#e2e8f0" />
+  <rect x="620" y="125" width="350" height="535" fill="#f8fafc" stroke="#e2e8f0" />
+
+  <!-- Initial State -->
+  <circle cx="170" cy="155" r="12" fill="#0f172a" />
+
+  <!-- Action: Tap Check In -->
+  <rect x="80" y="185" width="180" height="45" rx="8" fill="#ffffff" stroke="#0284c7" stroke-width="2" filter="url(#shadow)" />
+  <text x="170" y="205" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">Tap 'Check In' for</text>
+  <text x="170" y="221" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">Active Course Session</text>
+  <line x1="170" y1="167" x2="170" y2="185" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+
+  <!-- Verification: Window Open & Not Checked In? -->
+  <rect x="670" y="185" width="250" height="45" rx="8" fill="#ffffff" stroke="#0284c7" stroke-width="2" filter="url(#shadow)" />
+  <text x="795" y="205" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">Verify Class Window Open</text>
+  <text x="795" y="221" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">&amp; Check Prior Records</text>
+  <line x1="260" y1="207" x2="670" y2="207" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+
+  <!-- Decision: Window Open? -->
+  <polygon points="795,255 835,275 795,295 755,275" fill="#fef08a" stroke="#ca8a04" stroke-width="2" />
+  <text x="795" y="278" text-anchor="middle" fill="#713f12" font-size="9" font-weight="bold">Valid?</text>
+  <line x1="795" y1="230" x2="795" y2="255" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+
+  <!-- Refuse flow -->
+  <rect x="670" y="325" width="250" height="40" rx="8" fill="#fee2e2" stroke="#dc2626" stroke-width="2" filter="url(#shadow)" />
+  <text x="795" y="349" text-anchor="middle" fill="#991b1b" font-size="11" font-weight="bold">Refuse (Window Closed / Already Recorded)</text>
+  <line x1="835" y1="275" x2="940" y2="275" stroke="#dc2626" stroke-width="1.8" />
+  <line x1="940" y1="275" x2="940" y2="345" stroke="#dc2626" stroke-width="1.8" />
+  <line x1="940" y1="345" x2="920" y2="345" stroke="#dc2626" stroke-width="1.8" marker-end="url(#red-arrow)" />
+  <text x="860" y="268" fill="#dc2626" font-size="10" font-weight="bold">[No]</text>
+
+  <!-- Yes -> Request Geolocation -->
+  <rect x="350" y="255" width="230" height="40" rx="8" fill="#ffffff" stroke="#d97706" stroke-width="2" filter="url(#shadow)" />
+  <text x="465" y="279" text-anchor="middle" fill="#78350f" font-size="12" font-weight="600">Prompt Geolocation Permission</text>
+  <line x1="755" y1="275" x2="580" y2="275" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+  <text x="690" y="268" fill="#16a34a" font-size="10" font-weight="bold">[Yes: Open]</text>
+
+  <!-- Decision: Permission Granted? -->
+  <polygon points="465,325 505,345 465,365 425,345" fill="#fef08a" stroke="#ca8a04" stroke-width="2" />
+  <text x="465" y="348" text-anchor="middle" fill="#713f12" font-size="9" font-weight="bold">Granted?</text>
+  <line x1="465" y1="295" x2="465" y2="325" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+
+  <!-- Denied -> Route to QR fallback -->
+  <rect x="80" y="325" width="180" height="40" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="2" filter="url(#shadow)" />
+  <text x="170" y="349" text-anchor="middle" fill="#78350f" font-size="12" font-weight="bold">Scan Rotating QR Code (UC-06)</text>
+  <line x1="425" y1="345" x2="260" y2="345" stroke="#dc2626" stroke-width="1.8" marker-end="url(#red-arrow)" />
+  <text x="325" y="338" fill="#dc2626" font-size="10" font-weight="bold">[Denied / Error]</text>
+
+  <!-- Granted -> Backend Verifies Geofence -->
+  <rect x="670" y="395" width="250" height="45" rx="8" fill="#ffffff" stroke="#0284c7" stroke-width="2" filter="url(#shadow)" />
+  <text x="795" y="415" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">Calculate Haversine Distance</text>
+  <text x="795" y="431" text-anchor="middle" fill="#0f172a" font-size="11" font-weight="bold">Discard Coords Immediately (NFR11)</text>
+  <line x1="465" y1="365" x2="465" y2="417" stroke="#334155" stroke-width="1.8" />
+  <line x1="465" y1="417" x2="670" y2="417" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+  <text x="480" y="390" fill="#16a34a" font-size="10" font-weight="bold">[Allowed]</text>
+
+  <!-- Decision: Inside Geofence? -->
+  <polygon points="795,470 835,490 795,510 755,490" fill="#fef08a" stroke="#ca8a04" stroke-width="2" />
+  <text x="795" y="493" text-anchor="middle" fill="#713f12" font-size="9" font-weight="bold">In Fence?</text>
+  <line x1="795" y1="440" x2="795" y2="470" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+
+  <!-- Outside -> Route to QR fallback -->
+  <path d="M 755 490 L 220 490 L 220 365" fill="none" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="4,4" marker-end="url(#red-arrow)" />
+  <text x="500" y="482" fill="#dc2626" font-size="10" font-weight="bold">[Outside Building: Route to QR]</text>
+
+  <!-- Inside -> Store Present & Update Absence % -->
+  <rect x="670" y="540" width="250" height="50" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2" filter="url(#shadow)" />
+  <text x="795" y="562" text-anchor="middle" fill="#14532d" font-size="12" font-weight="bold">Store 'Present' (inside_fence=true)</text>
+  <text x="795" y="578" text-anchor="middle" fill="#14532d" font-size="11">Update Absence % &amp; Notify F3</text>
+  <line x1="795" y1="510" x2="795" y2="540" stroke="#16a34a" stroke-width="1.8" marker-end="url(#arrow)" />
+  <text x="805" y="528" fill="#16a34a" font-size="10" font-weight="bold">[Inside]</text>
+
+  <!-- Confirmation to Student -->
+  <rect x="80" y="545" width="180" height="40" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="2" filter="url(#shadow)" />
+  <text x="170" y="569" text-anchor="middle" fill="#14532d" font-size="12" font-weight="bold">Display Confirmation Badge</text>
+  <line x1="670" y1="565" x2="260" y2="565" stroke="#16a34a" stroke-width="1.8" marker-end="url(#arrow)" />
+
+  <!-- Final State -->
+  <circle cx="170" cy="625" r="10" fill="none" stroke="#0f172a" stroke-width="2" />
+  <circle cx="170" cy="625" r="6" fill="#0f172a" />
+  <line x1="170" y1="585" x2="170" y2="615" stroke="#0f172a" stroke-width="1.8" marker-end="url(#arrow)" />
+</svg>

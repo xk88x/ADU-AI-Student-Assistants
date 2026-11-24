@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 620" width="100%" height="100%" style="background:#ffffff; font-family:'Segoe UI', Arial, sans-serif;">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#334155" />
+    </marker>
+    <marker id="dash-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284c7" />
+    </marker>
+  </defs>
+
+  <!-- Title Banner -->
+  <rect x="20" y="15" width="910" height="55" rx="8" fill="#1e293b" />
+  <text x="475" y="42" text-anchor="middle" fill="#f8fafc" font-size="18" font-weight="bold">UML Use Case Diagram: Smart Advising &amp; Schedule Planning (F1)</text>
+  <text x="475" y="60" text-anchor="middle" fill="#94a3b8" font-size="13">Member: Ahmed Alameri (ID: 1090726) — Subsystem: Advising &amp; Scheduling Module</text>
+
+  <!-- System Boundary -->
+  <rect x="230" y="85" width="490" height="515" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2" stroke-dasharray="6,4" />
+  <text x="250" y="112" fill="#334155" font-size="15" font-weight="bold">«Subsystem» Smart Advising &amp; Timetable Engine</text>
+
+  <!-- Actor 1: Student -->
+  <g transform="translate(90, 260)">
+    <circle cx="0" cy="-35" r="16" fill="#e0f2fe" stroke="#0284c7" stroke-width="2.5" />
+    <line x1="0" y1="-19" x2="0" y2="22" stroke="#0284c7" stroke-width="2.5" />
+    <line x1="-24" y1="-5" x2="24" y2="-5" stroke="#0284c7" stroke-width="2.5" />
+    <line x1="0" y1="22" x2="-18" y2="52" stroke="#0284c7" stroke-width="2.5" />
+    <line x1="0" y1="22" x2="18" y2="52" stroke="#0284c7" stroke-width="2.5" />
+    <text x="0" y="74" text-anchor="middle" fill="#0f172a" font-size="14" font-weight="bold">Student</text>
+    <text x="0" y="90" text-anchor="middle" fill="#64748b" font-size="11">«Actor»</text>
+  </g>
+
+  <!-- Actor 2: Academic Advisor -->
+  <g transform="translate(850, 260)">
+    <circle cx="0" cy="-35" r="16" fill="#fef3c7" stroke="#d97706" stroke-width="2.5" />
+    <line x1="0" y1="-19" x2="0" y2="22" stroke="#d97706" stroke-width="2.5" />
+    <line x1="-24" y1="-5" x2="24" y2="-5" stroke="#d97706" stroke-width="2.5" />
+    <line x1="0" y1="22" x2="-18" y2="52" stroke="#d97706" stroke-width="2.5" />
+    <line x1="0" y1="22" x2="18" y2="52" stroke="#d97706" stroke-width="2.5" />
+    <text x="0" y="74" text-anchor="middle" fill="#0f172a" font-size="14" font-weight="bold">Academic Advisor</text>
+    <text x="0" y="90" text-anchor="middle" fill="#64748b" font-size="11">«Actor»</text>
+  </g>
+
+  <!-- Use Cases (Ellipses) -->
+  <!-- UC-01 Ask Question -->
+  <g transform="translate(360, 155)">
+    <ellipse cx="0" cy="0" rx="100" ry="28" fill="#ffffff" stroke="#0284c7" stroke-width="2" filter="url(#shadow)" />
+    <text x="0" y="-4" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">UC-01: Ask Registration</text>
+    <text x="0" y="12" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">Question (RAG Bot)</text>
+  </g>
+
+  <!-- UC-02 Refer to Advisor -->
+  <g transform="translate(600, 155)">
+    <ellipse cx="0" cy="0" rx="90" ry="26" fill="#ffffff" stroke="#0284c7" stroke-width="2" filter="url(#shadow)" />
+    <text x="0" y="-4" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">UC-02: Refer Question</text>
+    <text x="0" y="12" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">to Advisor</text>
+  </g>
+
+  <!-- UC-03 Build Schedule -->
+  <g transform="translate(370, 260)">
+    <ellipse cx="0" cy="0" rx="105" ry="30" fill="#ffffff" stroke="#0284c7" stroke-width="2" filter="url(#shadow)" />
+    <text x="0" y="-5" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">UC-03: Build Clash-Free</text>
+    <text x="0" y="12" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">Schedule Draft</text>
+  </g>
+
+  <!-- UC-04 Send Schedule -->
+  <g transform="translate(600, 260)">
+    <ellipse cx="0" cy="0" rx="90" ry="26" fill="#ffffff" stroke="#0284c7" stroke-width="2" filter="url(#shadow)" />
+    <text x="0" y="-4" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">UC-04: Send Schedule</text>
+    <text x="0" y="12" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">for Approval</text>
+  </g>
+
+  <!-- UC-14 Predict GPA & Enforce Cap -->
+  <g transform="translate(480, 365)">
+    <ellipse cx="0" cy="0" rx="105" ry="28" fill="#f0fdf4" stroke="#16a34a" stroke-width="2" filter="url(#shadow)" />
+    <text x="0" y="-4" text-anchor="middle" fill="#14532d" font-size="12" font-weight="600">UC-14: Guard Credit Load</text>
+    <text x="0" y="12" text-anchor="middle" fill="#14532d" font-size="12" font-weight="600">&amp; Enforce 12-Cr Cap</text>
+  </g>
+
+  <!-- UC-02b Review Schedule By Advisor -->
+  <g transform="translate(580, 475)">
+    <ellipse cx="0" cy="0" rx="95" ry="26" fill="#ffffff" stroke="#d97706" stroke-width="2" filter="url(#shadow)" />
+    <text x="0" y="-4" text-anchor="middle" fill="#78350f" font-size="12" font-weight="600">UC-04b: Review &amp;</text>
+    <text x="0" y="12" text-anchor="middle" fill="#78350f" font-size="12" font-weight="600">Approve Schedule Draft</text>
+  </g>
+
+  <!-- Associations (Lines) -->
+  <!-- Student to UC-01 -->
+  <line x1="120" y1="240" x2="265" y2="165" stroke="#334155" stroke-width="1.8" />
+  <!-- Student to UC-03 -->
+  <line x1="125" y1="260" x2="265" y2="260" stroke="#334155" stroke-width="1.8" />
+
+  <!-- Advisor to UC-02 -->
+  <line x1="820" y1="240" x2="690" y2="165" stroke="#334155" stroke-width="1.8" />
+  <!-- Advisor to UC-04 -->
+  <line x1="820" y1="265" x2="690" y2="265" stroke="#334155" stroke-width="1.8" />
+  <!-- Advisor to UC-04b -->
+  <line x1="825" y1="285" x2="675" y2="465" stroke="#334155" stroke-width="1.8" />
+
+  <!-- <<extend>> UC-01 to UC-02 -->
+  <line x1="460" y1="155" x2="510" y2="155" stroke="#0284c7" stroke-width="1.6" stroke-dasharray="5,4" marker-end="url(#dash-arrow)" />
+  <text x="485" y="145" text-anchor="middle" fill="#0284c7" font-size="11" font-weight="bold">«extend»</text>
+
+  <!-- <<extend>> UC-03 to UC-04 -->
+  <line x1="475" y1="260" x2="510" y2="260" stroke="#0284c7" stroke-width="1.6" stroke-dasharray="5,4" marker-end="url(#dash-arrow)" />
+  <text x="492" y="250" text-anchor="middle" fill="#0284c7" font-size="11" font-weight="bold">«extend»</text>
+
+  <!-- <<include>> UC-03 to UC-14 -->
+  <path d="M 400 290 L 450 338" fill="none" stroke="#16a34a" stroke-width="1.6" stroke-dasharray="5,4" marker-end="url(#dash-arrow)" />
+  <text x="445" y="308" text-anchor="middle" fill="#16a34a" font-size="11" font-weight="bold">«include»</text>
+
+  <!-- Footer Info Box -->
+  <rect x="230" y="525" width="490" height="60" rx="6" fill="#e2e8f0" />
+  <text x="245" y="546" fill="#1e293b" font-size="11" font-weight="bold">Traceability &amp; Rules Enforced:</text>
+  <text x="245" y="562" fill="#475569" font-size="11">• FR1.1 &amp; FR1.2: Strict handbook citations; fallback referrals to Advisor.</text>
+  <text x="245" y="576" fill="#475569" font-size="11">• FR1.4 &amp; FR1.5: Prerequisite verification and 12-credit ceiling enforcement when GPA &lt; 2.0.</text>
+</svg>

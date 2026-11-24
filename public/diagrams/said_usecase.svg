@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 620" width="100%" height="100%" style="background:#ffffff; font-family:'Segoe UI', Arial, sans-serif;">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+    <marker id="dash-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284c7" />
+    </marker>
+  </defs>
+
+  <!-- Title Banner -->
+  <rect x="20" y="15" width="910" height="55" rx="8" fill="#1e293b" />
+  <text x="475" y="42" text-anchor="middle" fill="#f8fafc" font-size="18" font-weight="bold">UML Use Case Diagram: Geofenced Attendance &amp; QR Fallback (F2)</text>
+  <text x="475" y="60" text-anchor="middle" fill="#94a3b8" font-size="13">Member: Said Taha (ID: 1093667) — Subsystem: Attendance Verification &amp; Audit Module</text>
+
+  <!-- System Boundary -->
+  <rect x="210" y="85" width="530" height="515" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2" stroke-dasharray="6,4" />
+  <text x="230" y="112" fill="#334155" font-size="15" font-weight="bold">«Subsystem» Automatic Attendance &amp; Audit Engine</text>
+
+  <!-- Actor 1: Student -->
+  <g transform="translate(85, 230)">
+    <circle cx="0" cy="-35" r="16" fill="#e0f2fe" stroke="#0284c7" stroke-width="2.5" />
+    <line x1="0" y1="-19" x2="0" y2="22" stroke="#0284c7" stroke-width="2.5" />
+    <line x1="-24" y1="-5" x2="24" y2="-5" stroke="#0284c7" stroke-width="2.5" />
+    <line x1="0" y1="22" x2="-18" y2="52" stroke="#0284c7" stroke-width="2.5" />
+    <line x1="0" y1="22" x2="18" y2="52" stroke="#0284c7" stroke-width="2.5" />
+    <text x="0" y="74" text-anchor="middle" fill="#0f172a" font-size="14" font-weight="bold">Student</text>
+    <text x="0" y="90" text-anchor="middle" fill="#64748b" font-size="11">«Actor»</text>
+  </g>
+
+  <!-- Actor 2: Instructor -->
+  <g transform="translate(865, 200)">
+    <circle cx="0" cy="-35" r="16" fill="#fef3c7" stroke="#d97706" stroke-width="2.5" />
+    <line x1="0" y1="-19" x2="0" y2="22" stroke="#d97706" stroke-width="2.5" />
+    <line x1="-24" y1="-5" x2="24" y2="-5" stroke="#d97706" stroke-width="2.5" />
+    <line x1="0" y1="22" x2="-18" y2="52" stroke="#d97706" stroke-width="2.5" />
+    <line x1="0" y1="22" x2="18" y2="52" stroke="#d97706" stroke-width="2.5" />
+    <text x="0" y="74" text-anchor="middle" fill="#0f172a" font-size="14" font-weight="bold">Course Instructor</text>
+    <text x="0" y="90" text-anchor="middle" fill="#64748b" font-size="11">«Actor»</text>
+  </g>
+
+  <!-- Actor 3: Registrar's Office -->
+  <g transform="translate(865, 430)">
+    <circle cx="0" cy="-35" r="16" fill="#f1f5f9" stroke="#475569" stroke-width="2.5" />
+    <line x1="0" y1="-19" x2="0" y2="22" stroke="#475569" stroke-width="2.5" />
+    <line x1="-24" y1="-5" x2="24" y2="-5" stroke="#475569" stroke-width="2.5" />
+    <line x1="0" y1="22" x2="-18" y2="52" stroke="#475569" stroke-width="2.5" />
+    <line x1="0" y1="22" x2="18" y2="52" stroke="#475569" stroke-width="2.5" />
+    <text x="0" y="74" text-anchor="middle" fill="#0f172a" font-size="14" font-weight="bold">Registrar's Office</text>
+    <text x="0" y="90" text-anchor="middle" fill="#64748b" font-size="11">«Actor»</text>
+  </g>
+
+  <!-- Use Cases -->
+  <!-- UC-05 Check in by location -->
+  <g transform="translate(365, 170)">
+    <ellipse cx="0" cy="0" rx="110" ry="28" fill="#ffffff" stroke="#0284c7" stroke-width="2" filter="url(#shadow)" />
+    <text x="0" y="-4" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">UC-05: Check In by Location</text>
+    <text x="0" y="12" text-anchor="middle" fill="#0f172a" font-size="11" font-weight="bold">(Geofenced Building)</text>
+  </g>
+
+  <!-- UC-06 Check in by QR code -->
+  <g transform="translate(605, 170)">
+    <ellipse cx="0" cy="0" rx="100" ry="28" fill="#ffffff" stroke="#0284c7" stroke-width="2" filter="url(#shadow)" />
+    <text x="0" y="-4" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">UC-06: Check In by QR Code</text>
+    <text x="0" y="12" text-anchor="middle" fill="#0f172a" font-size="11" font-weight="bold">(30s Rotating Fallback)</text>
+  </g>
+
+  <!-- UC-07 Display Rotating QR -->
+  <g transform="translate(605, 275)">
+    <ellipse cx="0" cy="0" rx="105" ry="28" fill="#ffffff" stroke="#d97706" stroke-width="2" filter="url(#shadow)" />
+    <text x="0" y="-4" text-anchor="middle" fill="#78350f" font-size="12" font-weight="600">UC-07: Display Rotating QR</text>
+    <text x="0" y="12" text-anchor="middle" fill="#78350f" font-size="11">for Active Session</text>
+  </g>
+
+  <!-- UC-08 Confirm or Correct Attendance -->
+  <g transform="translate(605, 370)">
+    <ellipse cx="0" cy="0" rx="105" ry="28" fill="#ffffff" stroke="#d97706" stroke-width="2" filter="url(#shadow)" />
+    <text x="0" y="-4" text-anchor="middle" fill="#78350f" font-size="12" font-weight="600">UC-08: Confirm / Correct</text>
+    <text x="0" y="12" text-anchor="middle" fill="#78350f" font-size="11">Roster Attendance</text>
+  </g>
+
+  <!-- UC-05b Track Absence Percentage & WA -->
+  <g transform="translate(365, 320)">
+    <ellipse cx="0" cy="0" rx="110" ry="28" fill="#fef2f2" stroke="#dc2626" stroke-width="2" filter="url(#shadow)" />
+    <text x="0" y="-4" text-anchor="middle" fill="#991b1b" font-size="12" font-weight="600">UC-05b: Compute Absence %</text>
+    <text x="0" y="12" text-anchor="middle" fill="#991b1b" font-size="11" font-weight="bold">&amp; Flag 10%/20%/30% WA</text>
+  </g>
+
+  <!-- UC-16 Audit Attendance Records -->
+  <g transform="translate(485, 470)">
+    <ellipse cx="0" cy="0" rx="115" ry="28" fill="#f8fafc" stroke="#475569" stroke-width="2" filter="url(#shadow)" />
+    <text x="0" y="-4" text-anchor="middle" fill="#1e293b" font-size="12" font-weight="600">UC-16: Audit &amp; Export</text>
+    <text x="0" y="12" text-anchor="middle" fill="#1e293b" font-size="11">Attendance Records</text>
+  </g>
+
+  <!-- Associations -->
+  <!-- Student to UC-05 -->
+  <line x1="120" y1="210" x2="260" y2="175" stroke="#334155" stroke-width="1.8" />
+  <!-- Student to UC-06 -->
+  <line x1="120" y1="225" x2="510" y2="185" stroke="#334155" stroke-width="1.8" />
+  <!-- Student to UC-05b -->
+  <line x1="120" y1="240" x2="265" y2="310" stroke="#334155" stroke-width="1.8" />
+
+  <!-- Instructor to UC-07 -->
+  <line x1="820" y1="205" x2="710" y2="265" stroke="#334155" stroke-width="1.8" />
+  <!-- Instructor to UC-08 -->
+  <line x1="820" y1="225" x2="705" y2="355" stroke="#334155" stroke-width="1.8" />
+
+  <!-- Registrar to UC-16 -->
+  <line x1="820" y1="430" x2="600" y2="465" stroke="#334155" stroke-width="1.8" />
+
+  <!-- <<extend>> UC-05 to UC-06 -->
+  <line x1="475" y1="170" x2="505" y2="170" stroke="#0284c7" stroke-width="1.6" stroke-dasharray="5,4" marker-end="url(#dash-arrow)" />
+  <text x="490" y="160" text-anchor="middle" fill="#0284c7" font-size="11" font-weight="bold">«extend»</text>
+
+  <!-- <<include>> UC-05 to UC-05b -->
+  <path d="M 365 198 L 365 292" fill="none" stroke="#dc2626" stroke-width="1.6" stroke-dasharray="5,4" marker-end="url(#dash-arrow)" />
+  <text x="395" y="250" text-anchor="middle" fill="#dc2626" font-size="11" font-weight="bold">«include»</text>
+
+  <!-- Footer Notice -->
+  <rect x="210" y="525" width="530" height="60" rx="6" fill="#e2e8f0" />
+  <text x="225" y="546" fill="#1e293b" font-size="11" font-weight="bold">Traceability &amp; Legal Constraints Enforced:</text>
+  <text x="225" y="562" fill="#475569" font-size="11">• UAE Federal Decree-Law No. 45/2021: Strict privacy, zero coordinate retention (NFR11).</text>
+  <text x="225" y="576" fill="#475569" font-size="11">• FR2.3 &amp; NFR9: 30-second TTL prevents proxy QR sharing across students.</text>
+</svg>

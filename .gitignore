@@ -1,0 +1,6 @@
+.env
+adu_portal.db
+storage/
+__pycache__/
+*.pyc
+.pytest_cache/

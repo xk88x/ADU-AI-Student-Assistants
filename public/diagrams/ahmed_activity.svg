@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 680" width="100%" height="100%" style="background:#ffffff; font-family:'Segoe UI', Arial, sans-serif;">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#334155" />
+    </marker>
+    <marker id="red-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626" />
+    </marker>
+  </defs>
+
+  <!-- Title Banner -->
+  <rect x="20" y="15" width="960" height="55" rx="8" fill="#0f172a" />
+  <text x="500" y="42" text-anchor="middle" fill="#f8fafc" font-size="18" font-weight="bold">UML Activity Diagram: UC-03 Build Clash-Free Schedule</text>
+  <text x="500" y="60" text-anchor="middle" fill="#94a3b8" font-size="13">Member: Ahmed Alameri (ID: 1090726) — Partitioned Swimlanes with Exception Loops</text>
+
+  <!-- Swimlane Headers -->
+  <rect x="30" y="85" width="280" height="40" fill="#f1f5f9" stroke="#cbd5e1" />
+  <text x="170" y="110" text-anchor="middle" fill="#0f172a" font-size="14" font-weight="bold">Student</text>
+
+  <rect x="310" y="85" width="410" height="40" fill="#e0f2fe" stroke="#cbd5e1" />
+  <text x="515" y="110" text-anchor="middle" fill="#0369a1" font-size="14" font-weight="bold">ADU Assistant (Scheduler &amp; GPA Guard)</text>
+
+  <rect x="720" y="85" width="250" height="40" fill="#fef3c7" stroke="#cbd5e1" />
+  <text x="845" y="110" text-anchor="middle" fill="#b45309" font-size="14" font-weight="bold">Academic Advisor</text>
+
+  <!-- Swimlane Columns -->
+  <rect x="30" y="125" width="280" height="535" fill="#fafafa" stroke="#e2e8f0" />
+  <rect x="310" y="125" width="410" height="535" fill="#f8fafc" stroke="#e2e8f0" />
+  <rect x="720" y="125" width="250" height="535" fill="#fffbeb" stroke="#e2e8f0" />
+
+  <!-- Initial State -->
+  <circle cx="170" cy="155" r="12" fill="#0f172a" />
+
+  <!-- Action: Select Plan Next Semester -->
+  <rect x="80" y="185" width="180" height="45" rx="8" fill="#ffffff" stroke="#0284c7" stroke-width="2" filter="url(#shadow)" />
+  <text x="170" y="212" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">Select 'Plan Next Semester'</text>
+
+  <!-- Transition Initial -> Action -->
+  <line x1="170" y1="167" x2="170" y2="185" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+
+  <!-- Action: Query Courses & GPA -->
+  <rect x="385" y="185" width="260" height="45" rx="8" fill="#ffffff" stroke="#0284c7" stroke-width="2" filter="url(#shadow)" />
+  <text x="515" y="205" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">Read Study Plan, Completed</text>
+  <text x="515" y="221" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">Courses &amp; Query Predicted GPA (UC-14)</text>
+
+  <!-- Transition Student -> System -->
+  <line x1="260" y1="207" x2="385" y2="207" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+
+  <!-- Decision: Any Eligible Courses? -->
+  <polygon points="515,260 560,285 515,310 470,285" fill="#fef08a" stroke="#ca8a04" stroke-width="2" />
+  <text x="515" y="289" text-anchor="middle" fill="#713f12" font-size="10" font-weight="bold">Eligible?</text>
+
+  <!-- Transition Query -> Decision -->
+  <line x1="515" y1="230" x2="515" y2="260" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+
+  <!-- No -> Referral -->
+  <rect x="760" y="265" width="170" height="40" rx="8" fill="#fee2e2" stroke="#dc2626" stroke-width="2" filter="url(#shadow)" />
+  <text x="845" y="289" text-anchor="middle" fill="#991b1b" font-size="12" font-weight="bold">Refer to Advisor (UC-02)</text>
+  <line x1="560" y1="285" x2="760" y2="285" stroke="#dc2626" stroke-width="1.8" marker-end="url(#red-arrow)" />
+  <text x="640" y="278" fill="#dc2626" font-size="11" font-weight="bold">[No eligible courses]</text>
+
+  <!-- End state for referral -->
+  <circle cx="845" cy="335" r="10" fill="none" stroke="#991b1b" stroke-width="2" />
+  <circle cx="845" cy="335" r="6" fill="#991b1b" />
+  <line x1="845" y1="305" x2="845" y2="325" stroke="#991b1b" stroke-width="1.8" marker-end="url(#arrow)" />
+
+  <!-- Yes -> Action: Enforce Credit Cap & Present Options -->
+  <rect x="385" y="340" width="260" height="45" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="2" filter="url(#shadow)" />
+  <text x="515" y="358" text-anchor="middle" fill="#14532d" font-size="12" font-weight="600">Enforce Max Limit (12 cr if probation,</text>
+  <text x="515" y="374" text-anchor="middle" fill="#14532d" font-size="12" font-weight="600">18 cr standard) &amp; Display Eligible</text>
+  <line x1="515" y1="310" x2="515" y2="340" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+  <text x="525" y="328" fill="#16a34a" font-size="11" font-weight="bold">[Yes]</text>
+
+  <!-- Action: Student Selects Desired Courses -->
+  <rect x="80" y="340" width="180" height="45" rx="8" fill="#ffffff" stroke="#0284c7" stroke-width="2" filter="url(#shadow)" />
+  <text x="170" y="360" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">Select Target Courses</text>
+  <text x="170" y="376" text-anchor="middle" fill="#0f172a" font-size="11" font-weight="bold">from Eligible List</text>
+  <line x1="385" y1="362" x2="260" y2="362" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+
+  <!-- Action: System Run Backtracking Clash Detector -->
+  <rect x="385" y="420" width="260" height="45" rx="8" fill="#ffffff" stroke="#0284c7" stroke-width="2" filter="url(#shadow)" />
+  <text x="515" y="438" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">Compute Clash-Free Combinations</text>
+  <text x="515" y="454" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">&amp; Identify Alternative Sections</text>
+  <line x1="170" y1="385" x2="170" y2="442" stroke="#334155" stroke-width="1.8" />
+  <line x1="170" y1="442" x2="385" y2="442" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+
+  <!-- Decision: Clash Found? -->
+  <polygon points="515,495 560,520 515,545 470,520" fill="#fef08a" stroke="#ca8a04" stroke-width="2" />
+  <text x="515" y="524" text-anchor="middle" fill="#713f12" font-size="10" font-weight="bold">Clash-Free?</text>
+  <line x1="515" y1="465" x2="515" y2="495" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+
+  <!-- Clash Loop Back to Student Selection -->
+  <path d="M 470 520 L 220 520 L 220 395" fill="none" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="4,4" marker-end="url(#red-arrow)" />
+  <text x="290" y="512" fill="#dc2626" font-size="11" font-weight="bold">[No: Clashing Sections]</text>
+
+  <!-- Yes -> Action: Display Timetable & Save Draft -->
+  <rect x="80" y="575" width="180" height="50" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2" filter="url(#shadow)" />
+  <text x="170" y="596" text-anchor="middle" fill="#14532d" font-size="12" font-weight="bold">Save Draft Schedule</text>
+  <text x="170" y="612" text-anchor="middle" fill="#14532d" font-size="11">&amp; Send to Advisor (UC-04)</text>
+
+  <line x1="515" y1="545" x2="515" y2="600" stroke="#16a34a" stroke-width="1.8" />
+  <line x1="515" y1="600" x2="260" y2="600" stroke="#16a34a" stroke-width="1.8" marker-end="url(#arrow)" />
+  <text x="440" y="592" fill="#16a34a" font-size="11" font-weight="bold">[Yes: Zero Clashes]</text>
+
+  <!-- Advisor Reviews and Approves -->
+  <rect x="760" y="575" width="170" height="50" rx="8" fill="#ffffff" stroke="#d97706" stroke-width="2" filter="url(#shadow)" />
+  <text x="845" y="596" text-anchor="middle" fill="#78350f" font-size="12" font-weight="bold">Review Draft &amp;</text>
+  <text x="845" y="612" text-anchor="middle" fill="#78350f" font-size="11">Approve / Provide Feedback</text>
+  <line x1="260" y1="615" x2="760" y2="615" stroke="#d97706" stroke-width="1.8" stroke-dasharray="4,4" marker-end="url(#arrow)" />
+
+  <!-- Final Activity End State -->
+  <circle cx="845" cy="650" r="10" fill="none" stroke="#0f172a" stroke-width="2" />
+  <circle cx="845" cy="650" r="6" fill="#0f172a" />
+</svg>

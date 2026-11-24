@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ADU Student Assistant - Abu Dhabi University Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="brand-group">
+        <span class="logo-red">ADU</span>
+        <span class="logo-text" data-i18n="Student Assistant">Student Assistant</span>
+      </div>
+
+      <div class="nav-links" id="navLinks">
+        <!-- Student Tabs -->
+        <button class="nav-btn active" data-role="student" data-pane="student-f1" onclick="switchRoleTab('student-f1', this)" data-i18n="Advising & Schedule">Advising &amp; Schedule</button>
+        <button class="nav-btn" data-role="student" data-pane="student-f2" onclick="switchRoleTab('student-f2', this)" data-i18n="Attendance & QR">Attendance &amp; QR</button>
+        <button class="nav-btn" data-role="student" data-pane="student-f3" onclick="switchRoleTab('student-f3', this)" data-i18n="Study & GPA">Study &amp; GPA</button>
+
+        <!-- Instructor Tabs -->
+        <button class="nav-btn hidden" data-role="instructor" data-pane="instructor-att" onclick="switchRoleTab('instructor-att', this)" data-i18n="Attendance & Rotating QR">Attendance &amp; Rotating QR</button>
+        <button class="nav-btn hidden" data-role="instructor" data-pane="instructor-study" onclick="switchRoleTab('instructor-study', this)" data-i18n="Lecture Summaries">Lecture Summaries</button>
+
+        <!-- Advisor Tab -->
+        <button class="nav-btn hidden" data-role="advisor" data-pane="advisor-workspace" onclick="switchRoleTab('advisor-workspace', this)" data-i18n="Advisor Workspace">Advisor Workspace</button>
+      </div>
+
+      <div class="nav-actions">
+        <div class="role-chip">
+          <span class="chip-dot"></span>
+          <select id="userRoleSelect" onchange="onRoleChange(this.value)" aria-label="Select Role">
+            <option value="student" data-i18n="Student (Khalid)">Student (Khalid)</option>
+            <option value="instructor" data-i18n="Instructor (Dr. Bhutta)">Instructor (Dr. Bhutta)</option>
+            <option value="advisor" data-i18n="Advisor (Dr. Murad)">Advisor (Dr. Murad)</option>
+          </select>
+        </div>
+        <button class="btn-lang" id="langToggleBtn" onclick="toggleRTL()" data-i18n="EN / عربي">EN / عربي</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="portal-main">
+
+    <!-- ==================== STUDENT: F1 ADVISING & SCHEDULE ==================== -->
+    <div id="student-f1" class="demo-pane active" data-role="student">
+      <div class="f1-grid">
+
+        <section class="panel">
+          <div class="panel-head">
+            <div class="head-text">
+              <h3 data-i18n="Clash-Free Schedule Builder">Clash-Free Schedule Builder</h3>
+              <p class="panel-sub" data-i18n="Next-semester planning with prerequisite and credit-cap checks">Next-semester planning with prerequisite and credit-cap checks</p>
+            </div>
+            <span class="pill-badge" id="liveCapBadge">CGPA: -- | Cap: -- Cr</span>
+          </div>
+
+          <div class="panel-body">
+            <div class="modern-checklist">
+              <label class="check-card">
+                <input type="checkbox" value="SWE 401" checked onchange="updateCreditsCount()">
+                <div class="check-info">
+                  <div><strong>SWE 401</strong>: <span data-i18n="Software Engineering (3 Cr)">Software Engineering (3 Cr)</span></div>
+                  <span class="sub-check" data-i18n="Prereq: SWE 301 (Completed)">Prereq: SWE 301 (Completed)</span>
+                </div>
+              </label>
+              <label class="check-card">
+                <input type="checkbox" value="CSC 305" checked onchange="updateCreditsCount()">
+                <div class="check-info">
+                  <div><strong>CSC 305</strong>: <span data-i18n="Operating Systems (3 Cr)">Operating Systems (3 Cr)</span></div>
+                  <span class="sub-check" data-i18n="Prereq: CSC 201 (Completed)">Prereq: CSC 201 (Completed)</span>
+                </div>
+              </label>
+              <label class="check-card">
+                <input type="checkbox" value="ITT 320" checked onchange="updateCreditsCount()">
+                <div class="check-info">
+                  <div><strong>ITT 320</strong>: <span data-i18n="Computer Networks (3 Cr)">Computer Networks (3 Cr)</span></div>
+                  <span class="sub-check" data-i18n="Prereq: CSC 201 (Completed)">Prereq: CSC 201 (Completed)</span>
+                </div>
+              </label>
+              <label class="check-card">
+                <input type="checkbox" value="MGT 308" onchange="updateCreditsCount()">
+                <div class="check-info">
+                  <div><strong>MGT 308</strong>: <span data-i18n="Engineering Ethics (3 Cr)">Engineering Ethics (3 Cr)</span></div>
+                  <span class="sub-check" data-i18n="No prerequisite">No prerequisite</span>
+                </div>
+              </label>
+              <label class="check-card disabled">
+                <input type="checkbox" value="CSC 410" disabled>
+                <div class="check-info">
+                  <div><strong>CSC 410</strong>: <span data-i18n="Capstone Project I (3 Cr)">Capstone Project I (3 Cr)</span></div>
+                  <span class="text-danger" data-i18n="Blocked: Requires SWE 401 prerequisite">Blocked: Requires SWE 401 prerequisite</span>
+                </div>
+              </label>
+            </div>
+
+            <div class="action-bar">
+              <div class="credits-stat"><span data-i18n="Selected:">Selected:</span> <strong id="liveCreditsVal">9</strong> / <span id="liveMaxCreditsVal">18</span> <span data-i18n="Cr">Cr</span></div>
+              <div class="btn-group">
+                <button class="btn-primary" onclick="generateLiveTimetable(false)" data-i18n="Generate Timetable">Generate Timetable</button>
+                <button class="btn-secondary" onclick="generateLiveTimetable(true)" data-i18n="Send to Advisor">Send to Advisor</button>
+              </div>
+            </div>
+
+            <div id="scheduleStatusAlert" class="result-alert hidden"></div>
+            <div id="studentDraftStatusBox" class="card-list"></div>
+
+            <div class="timetable-slots-row" id="timetableSlotsRow">
+              <div class="time-card c-blue">
+                <div class="t-code">SWE 401 (SWE401-11)</div>
+                <div class="t-slot">Mon/Wed 10:00-11:15</div>
+                <div class="t-room">Room B-204</div>
+              </div>
+              <div class="time-card c-green">
+                <div class="t-code">CSC 305 (CSC305-02)</div>
+                <div class="t-slot">Mon/Wed 13:00-14:15</div>
+                <div class="t-room">Room B-104</div>
+              </div>
+              <div class="time-card c-purple">
+                <div class="t-code">ITT 320 (ITT320-03)</div>
+                <div class="t-slot">Tue/Thu 11:30-12:45</div>
+                <div class="t-room">Room B-301</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <aside class="panel chat-panel">
+          <div class="panel-head">
+            <div class="head-text">
+              <h3 data-i18n="Smart Advising Bot">Smart Advising Bot</h3>
+              <p class="panel-sub" data-i18n="Grounded in ADU Student Handbook">Grounded in ADU Student Handbook</p>
+            </div>
+            <button class="btn-outline-sm" onclick="referModernAdvisor()" data-i18n="Refer to Advisor">Refer to Advisor</button>
+          </div>
+
+          <div class="chat-well" id="modernChatBox">
+            <div class="chat-bubble bot">
+              <div class="bubble-text">
+                <span data-i18n="Ask about probation credit limits, course prerequisites, or WA absence thresholds.">Ask about probation credit limits, course prerequisites, or WA absence thresholds.</span>
+                <div class="citation-tag" data-i18n="Source: ADU Undergraduate Handbook">Source: ADU Undergraduate Handbook</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="chat-input-bar">
+            <input type="text" id="modernChatInput" placeholder="Ask an advising question..." onkeydown="if(event.key==='Enter') sendModernChat()">
+            <button class="btn-primary" onclick="sendModernChat()" data-i18n="Send">Send</button>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+
+    <!-- ==================== STUDENT: F2 ATTENDANCE & QR ==================== -->
+    <div id="student-f2" class="demo-pane" data-role="student">
+      <div class="two-col-grid">
+
+        <section class="panel">
+          <div class="panel-head">
+            <div class="head-text">
+              <h3 data-i18n="Student Check-In">Student Check-In</h3>
+              <p class="panel-sub">SWE 401 (Sec 11) | Room B-204 | 10:00-11:15</p>
+            </div>
+            <span class="pill-badge" data-i18n="UAE Law 45/2021">UAE Law 45/2021</span>
+          </div>
+
+          <div class="panel-body">
+            <div class="loc-row">
+              <span id="locLabel" class="loc-status" data-i18n="Location: Inside Campus (Building B)">Location: Inside Campus (Building B)</span>
+              <button class="btn-outline-sm" onclick="toggleLocationSimulation()" data-i18n="Toggle Inside / Outside">Toggle Inside / Outside</button>
+            </div>
+
+            <button class="btn-primary full-w" onclick="testGeofenceCheckin()" data-i18n="Check In by Location">Check In by Location</button>
+            <div id="modernGeoResult" class="result-alert hidden"></div>
+
+            <div class="divider"><span data-i18n="QR Fallback">QR Fallback</span></div>
+
+            <div class="inline-form">
+              <input type="text" id="modernQrInput" placeholder="Enter 30s QR Token (e.g. ADU-9B2F)">
+              <button class="btn-secondary" onclick="testQrCheckin()" data-i18n="Verify QR">Verify QR</button>
+            </div>
+            <div id="modernQrResult" class="result-alert hidden"></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <div class="head-text">
+              <h3 data-i18n="My Absence Summary">My Absence Summary</h3>
+              <p class="panel-sub" data-i18n="Live absence percentage across enrolled courses">Live absence percentage across enrolled courses</p>
+            </div>
+            <button class="btn-outline-sm" onclick="loadStudentAbsenceSummary()" data-i18n="Refresh">Refresh</button>
+          </div>
+
+          <div class="panel-body">
+            <div class="absence-list" id="studentAbsenceList">
+              <div class="empty-state" data-i18n="Loading absence summary...">Loading absence summary...</div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- ==================== STUDENT: F3 STUDY & GPA ==================== -->
+    <div id="student-f3" class="demo-pane" data-role="student">
+      <div class="two-col-grid">
+
+        <section class="panel">
+          <div class="panel-head">
+            <div class="head-text">
+              <h3 data-i18n="Approved Lecture PDFs">Approved Lecture PDFs</h3>
+              <p class="panel-sub" data-i18n="Instructor-approved summaries and exam focus timestamps">Instructor-approved summaries and exam focus timestamps</p>
+            </div>
+            <span class="pill-badge" data-i18n="Audio Deleted <= 1h">Audio Deleted &lt;= 1h</span>
+          </div>
+
+          <div class="panel-body">
+            <div class="toolbar-row">
+              <span class="muted-text" data-i18n="Enrolled Section Summaries">Enrolled Section Summaries</span>
+              <button class="btn-outline-sm" onclick="loadStudentSummaries()" data-i18n="Refresh">Refresh</button>
+            </div>
+            <div id="studentSummariesList" class="card-list">
+              <div class="empty-state" data-i18n="Loading approved summaries...">Loading approved summaries...</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <div class="head-text">
+              <h3 data-i18n="GPA Prediction & Target">GPA Prediction &amp; Target</h3>
+              <p class="panel-sub" data-i18n="scikit-learn model using coursework and F2 attendance">scikit-learn model using coursework and F2 attendance</p>
+            </div>
+            <span class="pill-badge" data-i18n="No Bias Features">No Bias Features</span>
+          </div>
+
+          <div class="panel-body">
+            <div class="target-strip">
+              <label for="modernTargetGpa"><strong data-i18n="Personal GPA Target:">Personal GPA Target:</strong></label>
+              <input type="number" id="modernTargetGpa" min="2.0" max="4.0" step="0.05" value="3.50" onchange="updateModernGpaPrediction()">
+            </div>
+
+            <div class="kpi-row">
+              <div class="kpi-card">
+                <div class="kpi-val" id="currentCgpaVal">--</div>
+                <div class="kpi-desc" data-i18n="Current CGPA">Current CGPA</div>
+              </div>
+              <div class="kpi-card kpi-danger">
+                <div class="kpi-val" id="predictedGpaVal">--</div>
+                <div class="kpi-desc" data-i18n="Predicted GPA">Predicted GPA</div>
+              </div>
+              <div class="kpi-card kpi-success">
+                <div class="kpi-val" id="displayTargetGpa">3.50</div>
+                <div class="kpi-desc" data-i18n="Personal Target">Personal Target</div>
+              </div>
+            </div>
+
+            <div class="gpa-advice-box" id="modernGpaAdvice"></div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- ==================== INSTRUCTOR: ATTENDANCE & ROTATING QR ==================== -->
+    <div id="instructor-att" class="demo-pane" data-role="instructor">
+      <div class="two-col-grid">
+
+        <section class="panel">
+          <div class="panel-head">
+            <div class="head-text">
+              <h3 data-i18n="Instructor Rotating QR">Instructor Rotating QR</h3>
+              <p class="panel-sub" data-i18n="SWE401-11 | Token rotates every 30 seconds">SWE401-11 | Token rotates every 30 seconds</p>
+            </div>
+            <button class="btn-outline-sm" onclick="manualRotateToken()" data-i18n="Rotate QR">Rotate QR</button>
+          </div>
+
+          <div class="panel-body">
+            <div class="qr-box">
+              <div class="qr-code-token" id="modernQrDisplay">ADU-9B2F</div>
+              <div class="qr-meta">
+                <span data-i18n="Active Token:">Active Token:</span> <strong id="tokenStr">ADU-9B2F</strong> |
+                <span data-i18n="Expires in">Expires in</span> <strong id="tokenSeconds">30</strong>s
+              </div>
+            </div>
+            <div class="info-note" data-i18n="Display this rotating token on the classroom projector for students outside GPS accuracy.">
+              Display this rotating token on the classroom projector for students outside GPS accuracy.
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <div class="head-text">
+              <h3 data-i18n="Live Section Roster">Live Section Roster</h3>
+              <p class="panel-sub" data-i18n="SWE401-11 | Correct student attendance status">SWE401-11 | Correct student attendance status</p>
+            </div>
+            <button class="btn-outline-sm" onclick="loadInstructorRoster()" data-i18n="Refresh">Refresh</button>
+          </div>
+
+          <div class="panel-body">
+            <div id="instructorRosterStatus" class="result-alert hidden"></div>
+            <div id="instructorRosterList" class="card-list">
+              <div class="empty-state" data-i18n="Loading section roster...">Loading section roster...</div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- ==================== INSTRUCTOR: LECTURE SUMMARIES ==================== -->
+    <div id="instructor-study" class="demo-pane" data-role="instructor">
+      <div class="two-col-grid">
+
+        <section class="panel">
+          <div class="panel-head">
+            <div class="head-text">
+              <h3 data-i18n="Upload Lecture Recording">Upload Lecture Recording</h3>
+              <p class="panel-sub" data-i18n="Transcribe locally and delete raw audio within 1 hour">Transcribe locally and delete raw audio within 1 hour</p>
+            </div>
+            <span class="pill-badge" data-i18n="Audio Deleted <= 1h">Audio Deleted &lt;= 1h</span>
+          </div>
+
+          <div class="panel-body">
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="uploadSectionId" data-i18n="Section ID">Section ID</label>
+                <input type="text" id="uploadSectionId" value="SWE401-11">
+              </div>
+              <div class="form-field">
+                <label for="uploadLectureDate" data-i18n="Lecture Date">Lecture Date</label>
+                <input type="text" id="uploadLectureDate" value="2026-11-24">
+              </div>
+              <div class="form-field">
+                <label for="uploadNotesHint" data-i18n="Topic / Notes Hint">Topic / Notes Hint</label>
+                <input type="text" id="uploadNotesHint" placeholder="e.g. UML behavioral diagrams and NFR measurability">
+              </div>
+              <div class="form-field">
+                <label for="uploadAudioFile" data-i18n="Audio File (Optional)">Audio File (Optional)</label>
+                <input type="file" id="uploadAudioFile" accept=".mp3,.wav,.m4a,.ogg">
+              </div>
+            </div>
+
+            <button class="btn-primary full-w" onclick="uploadInstructorLecture()" data-i18n="Upload & Generate Draft">Upload &amp; Generate Draft</button>
+            <div id="instructorUploadStatus" class="result-alert hidden"></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <div class="head-text">
+              <h3 data-i18n="Lecture Summary Drafts">Lecture Summary Drafts</h3>
+              <p class="panel-sub" data-i18n="Approve drafts to publish PDFs to enrolled students">Approve drafts to publish PDFs to enrolled students</p>
+            </div>
+            <button class="btn-outline-sm" onclick="loadInstructorSummaries()" data-i18n="Refresh">Refresh</button>
+          </div>
+
+          <div class="panel-body">
+            <div id="instructorSummariesList" class="card-list">
+              <div class="empty-state" data-i18n="Loading lecture summaries...">Loading lecture summaries...</div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- ==================== ADVISOR: WORKSPACE ==================== -->
+    <div id="advisor-workspace" class="demo-pane" data-role="advisor">
+      <div class="advisor-stack">
+        <div class="two-col-grid">
+
+          <section class="panel">
+            <div class="panel-head">
+              <div class="head-text">
+                <h3 data-i18n="Student Referrals Queue">Student Referrals Queue</h3>
+                <p class="panel-sub" data-i18n="Questions escalated from Smart Advising Bot">Questions escalated from Smart Advising Bot</p>
+              </div>
+              <button class="btn-outline-sm" onclick="loadAdvisorReferrals()" data-i18n="Refresh">Refresh</button>
+            </div>
+
+            <div class="panel-body">
+              <div id="advisorReferralsList" class="card-list">
+                <div class="empty-state" data-i18n="Loading referrals...">Loading referrals...</div>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <div class="head-text">
+                <h3 data-i18n="At-Risk Advisees">At-Risk Advisees</h3>
+                <p class="panel-sub" data-i18n="Students with CGPA < 2.0 or Predicted GPA < 2.0">Students with CGPA &lt; 2.0 or Predicted GPA &lt; 2.0</p>
+              </div>
+              <button class="btn-outline-sm" onclick="loadAdvisorAtRisk()" data-i18n="Refresh">Refresh</button>
+            </div>
+
+            <div class="panel-body">
+              <div id="advisorAtRiskList" class="card-list">
+                <div class="empty-state" data-i18n="Loading at-risk advisees...">Loading at-risk advisees...</div>
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+        <section class="panel">
+          <div class="panel-head">
+            <div class="head-text">
+              <h3 data-i18n="Schedule Draft Approvals">Schedule Draft Approvals</h3>
+              <p class="panel-sub" data-i18n="Review student timetable drafts and approve or request changes">Review student timetable drafts and approve or request changes</p>
+            </div>
+            <button class="btn-outline-sm" onclick="loadAdvisorDrafts()" data-i18n="Refresh">Refresh</button>
+          </div>
+
+          <div class="panel-body">
+            <div id="advisorDraftStatus" class="result-alert hidden"></div>
+            <div id="advisorDraftsList" class="card-list">
+              <div class="empty-state" data-i18n="Loading schedule drafts...">Loading schedule drafts...</div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="portal-footer" data-i18n="Abu Dhabi University - ADU AI Student Assistant Portal">
+    Abu Dhabi University - ADU AI Student Assistant Portal
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
